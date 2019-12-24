@@ -42,7 +42,6 @@ int main(int argc , char *argv[])
     puts("Reply received\n");
   	puts(server_reply);
     memset(server_reply ,0 , 2000);
-    sleep(3);
 
 	}
 }

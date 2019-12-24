@@ -9,7 +9,7 @@
 int main(int argc, char const *argv[]) {
   int sock1;
   struct sockaddr_in server;
-  char *message[3] = {"hmX10000000","yooo", "connection type beat"};
+  char message[1024];
   int	connfd;
   int n;
   sock1 = socket(AF_INET,SOCK_STREAM,0);
@@ -24,9 +24,10 @@ int main(int argc, char const *argv[]) {
 
   listen(sock1,30);
 
-for(int i = 0; i<3;i++){
+while(1){
     connfd = accept(sock1, NULL, NULL);
-    send(connfd,message[i],strlen(message[i])+1,0);
+    scanf("%[^\n]%*c", message);
+    send(connfd,message,strlen(message)+1,0);
 }
     close(sock1);
 
