@@ -7,23 +7,27 @@
 #include<arpa/inet.h>	//inet_addr
 #include <sys/types.h>
 #include <time.h>
+#include <bluetooth/bluetooth.h>
+#include <bluetooth/rfcomm.h>
 int main(int argc , char *argv[])
 {
 	int socket_desc;
-	struct sockaddr_in server;
+	struct sockaddr_rc server={0};
 	char *message , server_reply[2000];
+	char *Mac = "AC:ED:5C:B4:3D:5D";
 
 	//Create socket
   while(1){
-	socket_desc = socket(AF_INET , SOCK_STREAM , 0);
+	socket_desc = socket(AF_BLUETOOTH , SOCK_STREAM , BTPROTO_RFCOMM);
 	if (socket_desc == -1)
 	{
 		printf("Could not create socket");
 	}
 
-	server.sin_addr.s_addr = INADDR_ANY;
-	server.sin_family = AF_INET;
-	server.sin_port = htons(9002);
+	server.rc_family = AF_BLUETOOTH;
+	server.rc_channel = (uint8_t)1;
+	str2ba(Mac,&server.rc_bdaddr);
+
 
 	//Connect to remote server
 
@@ -42,12 +46,13 @@ int main(int argc , char *argv[])
     puts("Reply received\n");
   	puts(server_reply);
     memset(server_reply ,0 , 2000);
+		sleep(3);
 
 	}
 }
 
 puts("recv failed");
 puts("connect error");
-
+// close(socket_desc);
 	return 0;
 }
