@@ -12,7 +12,7 @@ int main(int argc , char *argv[])
 	int socket_desc;
 	struct sockaddr_in server;
 	char *message , server_reply[2000];
-
+	char *ipa = "";
 	//Create socket
   while(1){
 	socket_desc = socket(AF_INET , SOCK_STREAM , 0);
@@ -21,8 +21,9 @@ int main(int argc , char *argv[])
 		printf("Could not create socket");
 	}
 
-	server.sin_addr.s_addr = INADDR_ANY;
 	server.sin_family = AF_INET;
+	inet_aton(ipa, &server.sin_addr);
+	// server.sin_addr = INADDR_ANY;
 	server.sin_port = htons(9002);
 
 	//Connect to remote server

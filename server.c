@@ -12,13 +12,14 @@ int main(int argc, char const *argv[]) {
   char message[1024];
   int	connfd;
   int n;
+  char *ipa = "192.168.122.1";
   sock1 = socket(AF_INET,SOCK_STREAM,0);
   if(sock1 < 0){
     perror("can't create socket");
   }
-
-  server.sin_addr.s_addr = INADDR_ANY;
-	server.sin_family = AF_INET;
+  
+  server.sin_family = AF_INET;
+	inet_aton(ipa, &server.sin_addr);
 	server.sin_port = htons(9002);
   bind(sock1, (struct sockaddr*)&server,sizeof(server));
 
