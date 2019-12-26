@@ -38,7 +38,7 @@ int main(int argc , char *argv[])
 
     puts("connect error1");
   }
-	//Send some data
+	//recieve some data
 
     if(recv(socket_desc, &server_reply , 2000 , 0)<0){
       return 1;

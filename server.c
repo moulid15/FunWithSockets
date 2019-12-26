@@ -26,14 +26,16 @@ int main(int argc, char const *argv[]) {
   server.rc_bdaddr = *BDADDR_ANY;
   bind(sock1, (struct sockaddr*)&server,sizeof(server));
 
-  listen(sock1,30);
 
-while(1){
-    connfd = accept(sock1, (struct sockaddr *)&server2, &opt);
-    scanf("%[^\n]%*c", message);
-    send(connfd,message,strlen(message)+1,0);
-}
+  listen(sock1,1);
+  while(1){
+      memset(message,0,1024);
+      connfd = accept(sock1, (struct sockaddr *)&server2, &opt);
+      scanf("%[^\n]%*c", message);
+      send(connfd,message,strlen(message)+1,0);
+  }
     close(sock1);
+    close(connfd);
 
   return 0;
 }
