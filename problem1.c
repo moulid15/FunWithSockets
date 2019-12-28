@@ -43,9 +43,13 @@ int main(int argc , char *argv[])
 		return 1;
 
   }
+<<<<<<< HEAD
 	// printf("get out connect\n" );
 	//Send some data
 		// connect(socket_desc , (struct sockaddr *)&server , sizeof(server));
+=======
+	//recieve some data
+>>>>>>> 2e0d3193ad8330f663c47b2904c66546a700eac5
 
 while(1){
 		// memset(server_reply ,0 , 2000);
