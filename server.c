@@ -14,7 +14,7 @@ sdp_session_t *register_service(uint8_t rfcomm_channel) {
 
 	/* A 128-bit number used to identify this service. The words are ordered from most to least
 	* significant, but within each word, the octets are ordered from least to most significant.
-	* For example, the UUID represneted by this array is 00001101-0000-1000-8000-00805F9B34FB. (The
+	* For example, the UUID represneted by this array is bd9e80c0-9331-45e1-b3bd-b6d656eb945a. (The
 	* hyphenation is a convention specified by the Service Discovery Protocol of the Bluetooth Core
 	* Specification, but is not particularly important for this program.)
 	*
